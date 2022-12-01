@@ -2,11 +2,11 @@ use crate::Problem;
 
 pub struct Solution;
 impl Problem for Solution {
-    fn part_one(input: &str) -> () {
+    fn part_one(input: &str) {
         let output = input
             .split("\n\n")
             .map(|e| {
-                e.split("\n")
+                e.split('\n')
                     .filter_map(|s| s.parse::<u32>().ok())
                     .sum::<u32>()
             })
@@ -15,11 +15,11 @@ impl Problem for Solution {
         println!("{:?}", output);
     }
 
-    fn part_two(input: &str) -> () {
+    fn part_two(input: &str) {
         let mut vec: Vec<u32> = input
             .split("\n\n")
             .map(|e| {
-                e.split("\n")
+                e.split('\n')
                     .filter_map(|s| s.parse::<u32>().ok())
                     .sum::<u32>()
             })

@@ -3,8 +3,8 @@ use days::day1;
 const INPUT: &str = include_str!("./input.txt");
 
 pub trait Problem {
-    fn part_one(input: &str) -> ();
-    fn part_two(input: &str) -> ();
+    fn part_one(input: &str);
+    fn part_two(input: &str);
 }
 
 fn main() {
