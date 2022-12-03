@@ -136,8 +136,7 @@ impl Solution for Problem {
 
 #[cfg(test)]
 mod tests {
-    const TEST_INPUT: &str = include_str!("../test-input.txt");
-    const DAY2_INPUT_TEST: &str = include_str!("../day2-input2-test.txt");
+    const TEST_INPUT: &str = include_str!("../../inputs/2/test-input.txt");
 
     use super::*;
 
@@ -147,6 +146,6 @@ mod tests {
     }
 
     fn part2() {
-        assert_eq!(Problem::part_two(DAY2_INPUT_TEST), "12");
+        assert_eq!(Problem::part_two(TEST_INPUT), "12");
     }
 }
