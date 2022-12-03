@@ -37,7 +37,6 @@ impl Solution for Problem {
                         .collect::<HashSet<String>>()
                 })
                 .collect::<Vec<HashSet<String>>>();
-            maps.sort_by(|a, b| a.len().cmp(&b.len()).reverse());
             let thing = maps[1..]
                 .iter()
                 .fold(maps[0].clone(), |acc, el| {
