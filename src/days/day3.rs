@@ -5,7 +5,7 @@ const ALPHABET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(input: &str) -> String {
+    fn part_one(&self, input: &str) -> String {
         let compartments: usize = input
             .lines()
             .map(|e| {
@@ -25,7 +25,7 @@ impl Solution for Problem {
         compartments.to_string()
     }
 
-    fn part_two(input: &str) -> String {
+    fn part_two(&self, input: &str) -> String {
         let lines: Vec<&str> = input.lines().collect();
         let chunks: Vec<&[&str]> = lines.chunks(3).collect();
         let total: usize = chunks
@@ -69,6 +69,6 @@ mod tests {
     #[test]
     #[ignore]
     fn d3_part2() {
-        assert_eq!(Problem::part_two(TEST_INPUT), "12");
+        assert_eq!(Problem::part_two(TEST_INPUT), "70");
     }
 }

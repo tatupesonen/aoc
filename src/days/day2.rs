@@ -88,7 +88,7 @@ fn play(round: Round) -> i32 {
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(input: &str) -> String {
+    fn part_one(&self, input: &str) -> String {
         let moves: Vec<Round> = input
             .lines()
             .map(|line| {
@@ -103,7 +103,7 @@ impl Solution for Problem {
         total.to_string()
     }
 
-    fn part_two(input: &str) -> String {
+    fn part_two(&self, input: &str) -> String {
         let moves: Vec<(Move, Goal)> = input
             .lines()
             .map(|line| {
