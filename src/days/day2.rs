@@ -73,18 +73,17 @@ fn get_winning_move(mov: Move) -> Move {
 }
 
 fn play(round: Round) -> i32 {
-    let p = match round {
+    match round {
         (Move::Paper, Move::Paper) => round.1 as i32 + 3,
         (Move::Paper, Move::Scissors) => round.1 as i32 + 6,
-        (Move::Paper, Move::Rock) => round.1 as i32 + 0,
+        (Move::Paper, Move::Rock) => round.1 as i32,
         (Move::Rock, Move::Paper) => round.1 as i32 + 6,
         (Move::Rock, Move::Rock) => round.1 as i32 + 3,
-        (Move::Rock, Move::Scissors) => round.1 as i32 + 0,
+        (Move::Rock, Move::Scissors) => round.1 as i32,
         (Move::Scissors, Move::Scissors) => round.1 as i32 + 3,
-        (Move::Scissors, Move::Paper) => round.1 as i32 + 0,
+        (Move::Scissors, Move::Paper) => round.1 as i32,
         (Move::Scissors, Move::Rock) => round.1 as i32 + 6,
-    };
-    p
+    }
 }
 
 pub struct Problem;
@@ -94,8 +93,8 @@ impl Solution for Problem {
             .lines()
             .map(|line| {
                 let items: Vec<Move> = line.chars().filter_map(|s| s.try_into().ok()).collect();
-                let moves = (items[0], items[1]);
-                moves
+
+                (items[0], items[1])
             })
             .collect();
 
@@ -108,7 +107,7 @@ impl Solution for Problem {
         let moves: Vec<(Move, Goal)> = input
             .lines()
             .map(|line| {
-                let mut it = line.chars().into_iter();
+                let mut it = line.chars();
                 let first: Move = it.next().unwrap().try_into().unwrap();
                 let _ = it.next();
                 let goal: Goal = it.next().unwrap().into();
@@ -122,7 +121,7 @@ impl Solution for Problem {
                 let mov = match goal {
                     Goal::Lose => get_losing_move(opponent),
                     Goal::Tie => opponent,
-                    Goal::Win => get_winning_move(opponent)
+                    Goal::Win => get_winning_move(opponent),
                 };
                 (opponent, mov)
             })

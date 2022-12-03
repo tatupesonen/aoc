@@ -1,11 +1,7 @@
 #![feature(iter_array_chunks)]
 mod days;
 
-
-use days::day1;
-use days::day2;
 use days::day3;
-
 
 const DAY_3: &str = include_str!("../inputs/3/input.txt");
 

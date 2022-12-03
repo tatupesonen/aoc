@@ -1,4 +1,4 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 
 use crate::Solution;
 const ALPHABET: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,33 +22,36 @@ impl Solution for Problem {
                     .collect::<Vec<usize>>()[0]
             })
             .sum();
-        return compartments.to_string();
+        compartments.to_string()
     }
 
     fn part_two(input: &str) -> String {
         let lines: Vec<&str> = input.lines().collect();
         let chunks: Vec<&[&str]> = lines.chunks(3).collect();
-        let total: usize = chunks.into_iter().map(|chunk| {
-            let mut maps = chunk
-                .into_iter()
-                .map(|e| {
-                    e.chars()
-                        .map(|e| e.to_string())
-                        .collect::<HashSet<String>>()
-                })
-                .collect::<Vec<HashSet<String>>>();
-            let thing = maps[1..]
-                .iter()
-                .fold(maps[0].clone(), |acc, el| {
-                    let thing = el.intersection(&acc).cloned().collect();
-                    thing
-                })
-                .into_iter()
-                .map(|e| ALPHABET.chars().position(|c| c.to_string() == e).unwrap() + 1)
-								.collect::<Vec<usize>>()[0];
-								thing
-        }).sum();
-				return total.to_string();
+        let total: usize = chunks
+            .into_iter()
+            .map(|chunk| {
+                let maps = chunk
+                    .iter()
+                    .map(|e| {
+                        e.chars()
+                            .map(|e| e.to_string())
+                            .collect::<HashSet<String>>()
+                    })
+                    .collect::<Vec<HashSet<String>>>();
+                let thing = maps[1..]
+                    .iter()
+                    .fold(maps[0].clone(), |acc, el| {
+                        let thing = el.intersection(&acc).cloned().collect();
+                        thing
+                    })
+                    .into_iter()
+                    .map(|e| ALPHABET.chars().position(|c| c.to_string() == e).unwrap() + 1)
+                    .collect::<Vec<usize>>()[0];
+                thing
+            })
+            .sum();
+        total.to_string()
     }
 }
 
