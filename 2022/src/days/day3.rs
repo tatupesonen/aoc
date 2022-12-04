@@ -63,12 +63,12 @@ mod tests {
 
     #[test]
     fn d3_part1() {
-        assert_eq!(Problem::part_one(TEST_INPUT), "157");
+        assert_eq!(Problem.part_one(TEST_INPUT), "157");
     }
 
     #[test]
     #[ignore]
     fn d3_part2() {
-        assert_eq!(Problem::part_two(TEST_INPUT), "70");
+        assert_eq!(Problem.part_two(TEST_INPUT), "70");
     }
 }

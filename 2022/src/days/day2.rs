@@ -141,10 +141,10 @@ mod tests {
 
     #[test]
     fn part1() {
-        assert_eq!(Problem::part_one(TEST_INPUT), "15");
+        assert_eq!(Problem.part_one(TEST_INPUT), "15");
     }
 
     fn part2() {
-        assert_eq!(Problem::part_two(TEST_INPUT), "12");
+        assert_eq!(Problem.part_two(TEST_INPUT), "12");
     }
 }

@@ -8,22 +8,38 @@ pub trait Solution {
     fn part_two(&self, input: &str) -> String;
 }
 
-fn select_day(day: usize) -> (usize, Box<dyn Solution>) {
-    let solution: Box<dyn Solution> = match day {
-        1 => Box::new(days::day1::Problem),
-        2 => Box::new(days::day2::Problem),
-        3 => Box::new(days::day3::Problem),
-        _ => panic!("no such day"),
+fn select_day(day: usize) -> Option<Box<dyn Solution>> {
+    let solution: Option<Box<dyn Solution>> = match day {
+        1 => Some(Box::new(days::day1::Problem)),
+        2 => Some(Box::new(days::day2::Problem)),
+        3 => Some(Box::new(days::day3::Problem)),
+        4 => Some(Box::new(days::day4::Problem)),
+        _ => None,
     };
 
-    (day, solution)
+    solution
 }
 
-fn run_day(input: &str, day: Box<dyn Solution>) -> () {
-    let part1 = day.part_one(input);
+fn run_all_days() {
+    let days = (1..25).filter_map(select_day);
+    for (day_num, sol) in days.into_iter().enumerate() {
+        let day_num = day_num + 1;
+        run_day(sol, day_num);
+    }
+}
+
+fn get_input(day_num: usize) -> String {
+    std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
+        .expect("Input file doesn't exist.")
+}
+
+fn run_day(day: Box<dyn Solution>, day_num: usize) {
+    println!("****** Solutions for day {} ******", day_num);
+    let input = get_input(day_num);
+    let part1 = day.part_one(&input);
     println!("Part 1: {}", part1);
-    let part2 = day.part_two(input);
-    println!("Part 2: {}", part2);
+    let part2 = day.part_two(&input);
+    println!("Part 2: {}\n", part2);
 }
 
 /// Simple program to greet a person
@@ -32,15 +48,18 @@ fn run_day(input: &str, day: Box<dyn Solution>) -> () {
 struct Args {
     /// Day to run
     #[arg(short, long)]
-    day: usize,
+    day: Option<usize>,
 }
 
 fn main() {
     let args = Args::parse();
-    let (day, solution) = select_day(args.day);
-    // Get input
-    let input = std::fs::read_to_string(format!("./inputs/{}/input.txt", day))
-        .expect("Input file doesn't exist.");
-    println!("****** Solutions for day {} ******", day);
-    run_day(&input, solution);
+    if let Some(day) = args.day {
+        let solution = select_day(day);
+        match solution {
+            Some(sol) => run_day(sol, day),
+            None => panic!("No solution for day {} found.", day),
+        }
+    } else {
+        run_all_days();
+    }
 }
