@@ -42,7 +42,6 @@ fn run_day(day: Box<dyn Solution>, day_num: usize) {
     println!("Part 2: {}\n", part2);
 }
 
-/// Simple program to greet a person
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
