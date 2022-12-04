@@ -41,15 +41,10 @@ impl Pair {
     }
 
     fn overlaps(&self) -> bool {
-        self.left
+        self.right
             .clone()
             .into_iter()
-            .any(|e| self.right.contains(&e))
-            || self
-                .right
-                .clone()
-                .into_iter()
-                .any(|e| self.left.contains(&e))
+            .any(|e| self.left.contains(&e))
     }
 }
 
@@ -78,7 +73,6 @@ impl Display for Pair {
                 write!(f, ".")?;
             }
         }
-        writeln!(f);
         Ok(())
     }
 }
