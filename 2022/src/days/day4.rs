@@ -21,8 +21,8 @@ impl FromStr for Pair {
         let (r_start, r_end) = (r_it.next().unwrap(), r_it.next().unwrap());
 
         Ok(Self {
-            left: RangeInclusive::new(l_start, l_end),
-            right: RangeInclusive::new(r_start, r_end),
+            left: l_start..=l_end,
+            right: r_start..=r_end,
         })
     }
 }
