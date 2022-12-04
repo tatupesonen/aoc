@@ -116,7 +116,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn d4_part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "4");
     }
