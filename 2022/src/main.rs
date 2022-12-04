@@ -9,15 +9,7 @@ pub trait Solution {
 }
 
 fn select_day(day: usize) -> Option<Box<dyn Solution>> {
-    let solution: Option<Box<dyn Solution>> = match day {
-        1 => Some(Box::new(days::day1::Problem)),
-        2 => Some(Box::new(days::day2::Problem)),
-        3 => Some(Box::new(days::day3::Problem)),
-        4 => Some(Box::new(days::day4::Problem)),
-        _ => None,
-    };
-
-    solution
+    daymport::dir!("src/days")
 }
 
 fn run_all_days() {
