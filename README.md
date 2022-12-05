@@ -1,8 +1,8 @@
 # Advent of Code
 
 ## 2022
-[![2022 CI](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml)
-Language of choice: Rust
+[![2022 CI](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml)  
+Language of choice: Rust 🦀
 ### Progress:
 | Day | Part 1 | Part 2 |
 | --- | ------ | ------ |
