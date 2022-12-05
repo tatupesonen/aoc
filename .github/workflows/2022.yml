@@ -23,7 +23,7 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: run
-        args: --release
+        args: --release --manifest-path 2022/Cargo.toml
         
   test:
     name: Run tests
