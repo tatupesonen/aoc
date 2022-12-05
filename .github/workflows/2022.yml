@@ -1,4 +1,8 @@
-on: [push, pull_request]
+on: 
+  push:
+    paths:
+      - "2022/**"
+    
 name: CI (2022)
 jobs:
   execute:
