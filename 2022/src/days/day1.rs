@@ -29,3 +29,20 @@ impl Solution for Problem {
         output.to_string()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    const TEST_INPUT: &str = include_str!("../../inputs/1/test-input.txt");
+
+    use super::*;
+
+    #[test]
+    fn part1() {
+        assert_eq!(Problem.part_one(TEST_INPUT), "24000");
+    }
+
+    #[test]
+    fn part2() {
+        assert_eq!(Problem.part_two(TEST_INPUT), "45000");
+    }
+}

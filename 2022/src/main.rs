@@ -1,6 +1,7 @@
 #![feature(iter_array_chunks)]
 
 use clap::{arg, Parser};
+use owo_colors::{OwoColorize, Stream::Stdout};
 mod days;
 
 pub trait Solution {
@@ -21,17 +22,17 @@ fn run_all_days() {
 }
 
 fn get_input(day_num: usize) -> String {
-    std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
+    std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
         .expect("Input file doesn't exist.")
 }
 
 fn run_day(day: Box<dyn Solution>, day_num: usize) {
-    println!("****** Solutions for day {} ******", day_num);
+    println!("****** Solutions for day {day_num} ******");
     let input = get_input(day_num);
     let part1 = day.part_one(&input);
-    println!("Part 1: {}", part1);
+    println!("Part 1: {}", part1.if_supports_color(Stdout, |text| text.bright_blue()));
     let part2 = day.part_two(&input);
-    println!("Part 2: {}\n", part2);
+    println!("Part 2: {}", part2.if_supports_color(Stdout, |text| text.bright_blue()));
 }
 
 #[derive(Parser, Debug)]
@@ -49,7 +50,7 @@ fn main() {
         match solution {
             Some(sol) => run_day(sol, day),
             None => {
-                eprintln!("No solution for day {} found.", day);
+                eprintln!("{}", "No solution for day found for given day.".if_supports_color(Stdout, |text| text.bright_red()));
                 std::process::exit(1);
             }
         }

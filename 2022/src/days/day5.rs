@@ -120,12 +120,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn d5_part1() {
+    fn part1() {
         assert_eq!(Problem.part_one(TEST_INPUT), "CMZ");
     }
 
     #[test]
-    fn d5_part2() {
+    fn part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "MCD");
     }
 }

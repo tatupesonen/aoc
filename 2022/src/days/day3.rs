@@ -62,12 +62,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn d3_part1() {
+    fn part1() {
         assert_eq!(Problem.part_one(TEST_INPUT), "157");
     }
 
     #[test]
-    fn d3_part2() {
+    fn part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "70");
     }
 }

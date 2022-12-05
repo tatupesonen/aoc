@@ -105,12 +105,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn d4_part1() {
+    fn part1() {
         assert_eq!(Problem.part_one(TEST_INPUT), "2");
     }
 
     #[test]
-    fn d4_part2() {
+    fn part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "4");
     }
 }

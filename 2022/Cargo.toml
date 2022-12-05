@@ -9,3 +9,4 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.29", features = ["derive"] }
 daymport = { path = "daymport" }
+owo-colors = { version = "3.5.0", features = ["supports-colors"] }
