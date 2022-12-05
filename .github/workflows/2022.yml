@@ -18,7 +18,32 @@ jobs:
     - name: Move to folder & run
       run: |
         cd 2022
+        cargo build --release --quiet
         cargo run --release
+
+  hyperfine:
+    name: Bench
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2
+
+    - name: Install nightly toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: nightly
+        override: true
+
+    - name: Install hyperfine
+      run: |
+        cargo install hyperfine --quiet
+
+    - name: Move to folder & run
+      run: |
+        cd 2022
+        cargo build --release --quiet
+        hyperfine --warmup 3 './target/release/aoc2022'
 
   test:
     name: Run tests
