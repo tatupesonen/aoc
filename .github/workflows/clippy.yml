@@ -1,10 +1,7 @@
 on: [push, pull_request]
-name: Clippy (new version test, don't use it!)
+name: CI
 jobs:
   test:
-    defaults:
-      run:
-        working-directory: ./2022
     name: Run tests
     runs-on: ubuntu-latest
     steps:
@@ -17,18 +14,22 @@ jobs:
           profile: minimal
           toolchain: nightly
           override: true
+        
+      - name: cd into the 2022 directory
+        run: |
+          cd 2022
 
       - name: Run cargo test
         uses: actions-rs/cargo@v1
         with:
           command: test
   clippy:
-    defaults:
-      run:
-        working-directory: ./2022
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: cd into the directory
+        run: |
+          cd 2022
       - uses: actions-rs/toolchain@v1
         with:
             toolchain: nightly
