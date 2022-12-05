@@ -1,5 +1,5 @@
 on: [push, pull_request]
-name: CI
+name: CI (2022)
 jobs:
   test:
     name: Run tests
@@ -14,10 +14,6 @@ jobs:
           profile: minimal
           toolchain: nightly
           override: true
-        
-      - name: cd into the 2022 directory
-        run: |
-          cd 2022
 
       - name: Run cargo test
         uses: actions-rs/cargo@v1
@@ -28,12 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: cd into the directory
-        run: |
-          cd 2022
       - uses: actions-rs/toolchain@v1
         with:
             toolchain: nightly
             components: clippy
+            args: --manifest-path 2022/Cargo.toml
             override: true
       - uses: actions-rs/clippy@master
