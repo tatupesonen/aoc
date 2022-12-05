@@ -15,16 +15,11 @@ jobs:
         toolchain: nightly
         override: true
 
-    - name: Move to folder
+    - name: Move to folder & run
       run: |
         cd 2022
-    
-    - name: Build & run
-      uses: actions-rs/cargo@v1
-      with:
-        command: run
-        args: --release --manifest-path 2022/Cargo.toml
-        
+        cargo run --release
+
   test:
     name: Run tests
     runs-on: ubuntu-latest
