@@ -9,4 +9,3 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.29", features = ["derive"] }
 daymport = { path = "daymport" }
-dirmod = "0.1.5"

@@ -49,9 +49,9 @@ fn main() {
         match solution {
             Some(sol) => run_day(sol, day),
             None => {
-							eprintln!("No solution for day {} found.", day);
-							std::process::exit(1);
-						}
+                eprintln!("No solution for day {} found.", day);
+                std::process::exit(1);
+            }
         }
     } else {
         run_all_days();

@@ -144,6 +144,7 @@ mod tests {
         assert_eq!(Problem.part_one(TEST_INPUT), "15");
     }
 
+    #[test]
     fn part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "12");
     }
