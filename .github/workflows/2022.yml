@@ -18,12 +18,12 @@ jobs:
     - name: Move to folder
       run: |
         cd 2022
-        pwd
     
     - name: Build & run
       uses: actions-rs/cargo@v1
       with:
-        command: run --release
+        command: run
+        args: --release
         
   test:
     name: Run tests
