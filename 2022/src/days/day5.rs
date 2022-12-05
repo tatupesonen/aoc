@@ -41,18 +41,17 @@ fn parse_input(input: &str) -> (Vec<Instruction>, HashMap<usize, Vec<char>>) {
             .chars()
             .into_iter()
             .enumerate()
-            .filter_map(|(idx, c)| if (idx + 1) % 4 == 0 { None } else { Some(c) })
+            .filter_map(|(idx, c)| if idx % 4 == 1 { Some(c) } else { None })
             .collect();
-        let chunked: Vec<String> = it.chunks(3).map(String::from_iter).collect();
-        rows.push(chunked);
+        rows.push(it);
     }
     rows.pop();
     // go through each row and push them to their cols
     for row in rows.into_iter() {
         row.into_iter().enumerate().for_each(|(idx, item)| {
             let stack = stacks.entry(idx + 1).or_insert(Vec::new());
-            if item != "   " {
-                stack.push(item.chars().collect::<Vec<char>>()[1]);
+            if item != ' ' {
+                stack.push(item);
             }
         });
     }

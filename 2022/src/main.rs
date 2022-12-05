@@ -22,7 +22,7 @@ fn run_all_days() {
 }
 
 fn get_input(day_num: usize) -> String {
-    std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
+    std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
         .expect("Input file doesn't exist.")
 }
 

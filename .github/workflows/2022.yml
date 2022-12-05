@@ -1,6 +1,30 @@
 on: [push, pull_request]
 name: CI (2022)
 jobs:
+  execute:
+    name: Run application
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2
+
+    - name: Install nightly toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: nightly
+        override: true
+
+    - name: Move to folder
+      run: |
+        cd 2022
+        pwd
+    
+    - name: Build & run
+      uses: actions-rs/cargo@v1
+      with:
+        command: run --release
+        
   test:
     name: Run tests
     runs-on: ubuntu-latest
