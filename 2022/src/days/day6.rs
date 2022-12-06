@@ -35,17 +35,27 @@ impl Solution for Problem {
 
 #[cfg(test)]
 mod tests {
-    const TEST_INPUT: &str = include_str!("../../inputs/6/test-input.txt");
-
     use super::*;
+    use rstest::rstest;
 
-    #[test]
-    fn part1() {
-        assert_eq!(Problem.part_one(TEST_INPUT), "11");
+    #[rstest]
+    #[case("bvwbjplbgvbhsrlpgdmjqwftvncz", 5)]
+    #[case("nppdvjthqldpwncqszvftbrmjlhg", 6)]
+    #[case("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10)]
+    #[case("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)]
+    fn part1(#[case] input: &str, #[case] expected: usize) {
+        let input: Vec<char> = input.chars().into_iter().collect();
+        assert_eq!(find_marker(input, PART1_SLICE_SIZE), expected);
     }
 
-    #[test]
-    fn part2() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "26");
+    #[rstest]
+    #[case("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19)]
+    #[case("bvwbjplbgvbhsrlpgdmjqwftvncz", 23)]
+    #[case("nppdvjthqldpwncqszvftbrmjlh", 23)]
+    #[case("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29)]
+    #[case("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
+    fn part2(#[case] input: &str, #[case] expected: usize) {
+        let input: Vec<char> = input.chars().into_iter().collect();
+        assert_eq!(find_marker(input, PART2_SLICE_SIZE), expected);
     }
 }
