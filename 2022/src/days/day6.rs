@@ -14,7 +14,7 @@ fn find_marker(it: Vec<char>, slice_size: usize) -> usize {
             break;
         }
     }
-		found
+    found
 }
 
 pub struct Problem;
@@ -22,13 +22,13 @@ impl Solution for Problem {
     fn part_one(&self, input: &str) -> String {
         // Collect to vec so we get `.windows()`. For some reason `Chars<_>` does not implement it.
         let output: Vec<char> = input.chars().into_iter().collect();
-				let found = find_marker(output, PART1_SLICE_SIZE);
+        let found = find_marker(output, PART1_SLICE_SIZE);
         found.to_string()
     }
 
     fn part_two(&self, input: &str) -> String {
         let output: Vec<char> = input.chars().into_iter().collect();
-				let found = find_marker(output, PART2_SLICE_SIZE);
+        let found = find_marker(output, PART2_SLICE_SIZE);
         found.to_string()
     }
 }
