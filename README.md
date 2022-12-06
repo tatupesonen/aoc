@@ -8,40 +8,36 @@ Language of choice: Rust 🦀
 <summary>Progress:</summary>
 <br>
 <table>
-    <tr>
-        <td>Day</td>
-        <td>Part 1</td>
-        <td>Part 2</td>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>:star:</td>
-        <td>:star:</td>
-    </tr>
+<thead>
+  <tr>
+    <th></th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+    <th>5</th>
+    <th>6</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Part 1</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+  </tr>
+  <tr>
+    <td>Part 2</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+    <td>⭐</td>
+  </tr>
+</tbody>
 </table>
 </details>
