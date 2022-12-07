@@ -1,4 +1,5 @@
 #![feature(iter_array_chunks)]
+#![feature(iter_intersperse)]
 
 use clap::{arg, Parser};
 use owo_colors::{OwoColorize, Stream::Stdout};
