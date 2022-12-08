@@ -1,14 +1,16 @@
 # 2022
-Language: [Rust](https://www.rust-lang.org/)
+AoC 2022 in [Rust](https://www.rust-lang.org/)
 
 ## Usage
 All commands below should be ran in this folder (2022).
 
-### Test
+## Tests
+To run all tests:
 ```console
 cargo test
 ```
 
+## Running days
 ### Run all days
 ```console
 cargo run --release
@@ -22,6 +24,12 @@ cargo run --release -- --day <n>
 ### Run days with test input
 ```console
 cargo run --release -- --test # Runs all with test input
+```
+
+## Miscellanous
+### Benchmark
+```console
+cargo bench
 ```
 
 ### Show all commands
