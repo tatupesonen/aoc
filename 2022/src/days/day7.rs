@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap},
-    str::FromStr,
-};
+use std::{collections::HashMap, str::FromStr};
 
 use crate::Solution;
 const TOTAL_AVAIL_DISK_SPACE: usize = 70_000_000;
@@ -113,7 +110,8 @@ impl Solution for Problem {
 
         let dir_sizes = get_dir_sizes(tokens);
 
-        dir_sizes.values()
+        dir_sizes
+            .values()
             .filter(|&&s| s < 100_000)
             .sum::<usize>()
             .to_string()

@@ -1,4 +1,4 @@
-/// Rotates a map by 
+/// Rotates a map by
 pub fn transpose<T>(v: Vec<Vec<T>>) -> Vec<Vec<T>>
 where
     T: Clone,
@@ -10,5 +10,8 @@ where
 }
 
 pub fn rotate_right<T: Clone>(v: Vec<Vec<T>>) -> Vec<Vec<T>> {
-	transpose(v).into_iter().map(|e| e.into_iter().rev().collect()).collect()
+    transpose(v)
+        .into_iter()
+        .map(|e| e.into_iter().rev().collect())
+        .collect()
 }

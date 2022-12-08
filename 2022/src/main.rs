@@ -25,14 +25,13 @@ fn run_all_days(test: bool) {
 }
 
 fn get_input(day_num: usize, test: bool) -> String {
-	if(!test) {
-    std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
-        .expect("Input file doesn't exist.")
-	} else {
-    std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
-        .expect("Input file doesn't exist.")
-
-	}
+    if !test {
+        std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
+            .expect("Input file doesn't exist.")
+    } else {
+        std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
+            .expect("Input file doesn't exist.")
+    }
 }
 
 fn run_day(day: Box<dyn Solution>, day_num: usize, test: bool) {
@@ -57,8 +56,8 @@ struct Args {
     #[arg(short, long)]
     day: Option<usize>,
 
-		#[arg(short, long, default_value_t = false)]
-		test: bool,
+    #[arg(short, long, default_value_t = false)]
+    test: bool,
 }
 
 fn main() {

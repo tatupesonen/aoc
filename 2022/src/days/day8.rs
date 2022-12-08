@@ -1,12 +1,11 @@
-use crate::{
-    utils::{self, transpose},
-    Solution,
-};
+use std::fmt::Display;
 
-fn iter_row(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
-    for (row_num, row) in vec.into_iter().enumerate() {
+use crate::Solution;
+
+pub fn solve_p1(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
+    for (row_num, row) in vec.iter().enumerate() {
         let mut prev = -1;
-        for (col_num, tree) in row.into_iter().enumerate() {
+        for (col_num, tree) in row.iter().enumerate() {
             match *tree > prev {
                 true => {
                     prev = *tree;
@@ -16,12 +15,10 @@ fn iter_row(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
             }
         }
     }
-}
 
-fn iter_cols(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
     for (y, row) in vec.iter().enumerate() {
         let mut prev = -1;
-        for (x, col) in row.iter().enumerate() {
+        for x in 0..row.len() {
             match vec[x][y] > prev {
                 true => {
                     prev = vec[x][y];
@@ -31,9 +28,7 @@ fn iter_cols(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
             }
         }
     }
-}
 
-fn iter_rows_rev(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
     for (y, row) in vec.iter().enumerate() {
         let mut prev = -1;
         for idx in (0..row.len()).rev() {
@@ -46,9 +41,7 @@ fn iter_rows_rev(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
             }
         }
     }
-}
 
-fn iter_cols_rev(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
     for y in (0..vec.len()).rev() {
         let mut prev = -1;
         for x in (0..vec[y].len()).rev() {
@@ -59,6 +52,53 @@ fn iter_cols_rev(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {
                 }
                 _ => {}
             }
+        }
+    }
+}
+
+pub fn solve_p2(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<u32>>) {
+    for row in 0..vec.len() {
+        for col in 0..vec[row].len() {
+            let height = vec[row][col];
+
+            let mut left: u32 = 0;
+            let mut right: u32 = 0;
+            let mut up: u32 = 0;
+            let mut down: u32 = 0;
+
+            // up
+            for y in (0..row).rev() {
+                up += 1;
+                if vec[y][col] >= height {
+                    break;
+                }
+            }
+
+            // to the left of the tree
+            for x in (0..col).rev() {
+                left += 1;
+                if vec[row][x] >= height {
+                    break;
+                }
+            }
+
+            // to right of the tree
+            for x in (col + 1)..vec[row].len() {
+                right += 1;
+                if vec[row][x] >= height {
+                    break;
+                }
+            }
+
+            // down
+            for y in (row + 1)..vec.len() {
+                down += 1;
+                if vec[y][col] >= height {
+                    break;
+                }
+            }
+
+            counts[row][col] = left * right * up * down
         }
     }
 }
@@ -75,10 +115,7 @@ impl Solution for Problem {
         let width = map[0].len();
 
         let mut counts: Vec<Vec<i8>> = vec![vec![0; width]; height];
-        iter_row(&map, &mut counts);
-        iter_cols(&map, &mut counts);
-        iter_rows_rev(&map, &mut counts);
-        iter_cols_rev(&map, &mut counts);
+        solve_p1(&map, &mut counts);
         let count: u32 = counts
             .into_iter()
             .flatten()
@@ -89,7 +126,19 @@ impl Solution for Problem {
     }
 
     fn part_two(&self, input: &str) -> String {
-			todo!();
+        let map: Vec<Vec<i8>> = input
+            .lines()
+            .map(|l| l.chars().map(|e| e.to_digit(10).unwrap() as i8).collect())
+            .collect();
+
+        let height = map.len();
+        let width = map[0].len();
+
+        let mut counts: Vec<Vec<u32>> = vec![vec![0; width]; height];
+        solve_p2(&map, &mut counts);
+        let count: u32 = counts.into_iter().flatten().max().unwrap();
+
+        count.to_string()
     }
 }
 // 01234
@@ -100,8 +149,7 @@ impl Solution for Problem {
 // 33549 - 3
 // 35390 - 4
 
-fn print_vec(v: &Vec<Vec<i8>>) {
-    println!("***********");
+fn print_vec<T: Display>(v: &Vec<Vec<T>>) {
     for row in v {
         for col in row {
             print!("{}", col);
