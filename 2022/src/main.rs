@@ -1,6 +1,8 @@
 #![feature(iter_array_chunks)]
 #![feature(iter_intersperse)]
 
+pub mod utils;
+
 use clap::{arg, Parser};
 use owo_colors::{OwoColorize, Stream::Stdout};
 mod days;
@@ -14,22 +16,28 @@ fn select_day(day: usize) -> Option<Box<dyn Solution>> {
     daymport::dir!("src/days")
 }
 
-fn run_all_days() {
+fn run_all_days(test: bool) {
     let days = (1..25).filter_map(select_day);
     for (day_num, sol) in days.into_iter().enumerate() {
         let day_num = day_num + 1;
-        run_day(sol, day_num);
+        run_day(sol, day_num, test);
     }
 }
 
-fn get_input(day_num: usize) -> String {
+fn get_input(day_num: usize, test: bool) -> String {
+	if(!test) {
     std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
         .expect("Input file doesn't exist.")
+	} else {
+    std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
+        .expect("Input file doesn't exist.")
+
+	}
 }
 
-fn run_day(day: Box<dyn Solution>, day_num: usize) {
+fn run_day(day: Box<dyn Solution>, day_num: usize, test: bool) {
     println!("****** Solutions for day {day_num} ******");
-    let input = get_input(day_num);
+    let input = get_input(day_num, test);
     let part1 = day.part_one(&input);
     println!(
         "Part 1: {}",
@@ -48,6 +56,9 @@ struct Args {
     /// Day to run
     #[arg(short, long)]
     day: Option<usize>,
+
+		#[arg(short, long, default_value_t = false)]
+		test: bool,
 }
 
 fn main() {
@@ -55,7 +66,7 @@ fn main() {
     if let Some(day) = args.day {
         let solution = select_day(day);
         match solution {
-            Some(sol) => run_day(sol, day),
+            Some(sol) => run_day(sol, day, args.test),
             None => {
                 eprintln!(
                     "{}",
@@ -66,6 +77,6 @@ fn main() {
             }
         }
     } else {
-        run_all_days();
+        run_all_days(args.test);
     }
 }
