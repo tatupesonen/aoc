@@ -1,5 +1,3 @@
-use std::fmt::Display;
-
 use crate::Solution;
 
 pub fn solve_p1(vec: &Vec<Vec<i8>>, counts: &mut Vec<Vec<i8>>) {

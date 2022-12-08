@@ -3,14 +3,9 @@
 
 pub mod utils;
 
+use aoc2022::*;
 use clap::{arg, Parser};
 use owo_colors::{OwoColorize, Stream::Stdout};
-mod days;
-
-pub trait Solution {
-    fn part_one(&self, input: &str) -> String;
-    fn part_two(&self, input: &str) -> String;
-}
 
 fn select_day(day: usize) -> Option<Box<dyn Solution>> {
     daymport::dir!("src/days")
@@ -24,17 +19,7 @@ fn run_all_days(test: bool) {
     }
 }
 
-fn get_input(day_num: usize, test: bool) -> String {
-    if !test {
-        std::fs::read_to_string(format!("./inputs/{}/input.txt", day_num))
-            .expect("Input file doesn't exist.")
-    } else {
-        std::fs::read_to_string(format!("./inputs/{}/test-input.txt", day_num))
-            .expect("Input file doesn't exist.")
-    }
-}
-
-fn run_day(day: Box<dyn Solution>, day_num: usize, test: bool) {
+pub fn run_day(day: Box<dyn Solution>, day_num: usize, test: bool) {
     println!("****** Solutions for day {day_num} ******");
     let input = get_input(day_num, test);
     let part1 = day.part_one(&input);

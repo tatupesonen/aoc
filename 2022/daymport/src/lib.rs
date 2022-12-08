@@ -56,7 +56,7 @@ fn match_arm(name: String, idx: usize) -> TokenStream2 {
     let lit = Literal::usize_unsuffixed(idx);
 
     quote! {
-      #lit => Some(Box::new(crate::days::#ident::Problem)),
+      #lit => Some(Box::new(aoc2022::days::#ident::Problem)),
     }
 }
 
