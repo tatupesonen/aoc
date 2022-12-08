@@ -149,14 +149,14 @@ impl Solution for Problem {
 // 33549 - 3
 // 35390 - 4
 
-fn print_vec<T: Display>(v: &Vec<Vec<T>>) {
-    for row in v {
-        for col in row {
-            print!("{}", col);
-        }
-        println!();
-    }
-}
+// fn print_vec<T: Display>(v: &Vec<Vec<T>>) {
+//     for row in v {
+//         for col in row {
+//             print!("{}", col);
+//         }
+//         println!();
+//     }
+// }
 
 #[cfg(test)]
 mod tests {
@@ -169,7 +169,6 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn part2() {
         assert_eq!(Problem.part_two(TEST_INPUT), "8");
     }
