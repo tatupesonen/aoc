@@ -41,6 +41,7 @@ struct Args {
     #[arg(short, long)]
     day: Option<usize>,
 
+    /// Flag to enable test input
     #[arg(short, long, default_value_t = false)]
     test: bool,
 }

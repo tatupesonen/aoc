@@ -1,6 +1,6 @@
 # Advent of Code
 
-## 2022
+## [2022](2022/README.md)
 [![2022 CI](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml)  
 Language of choice: Rust 🦀
 

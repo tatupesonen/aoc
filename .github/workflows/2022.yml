@@ -27,26 +27,6 @@ jobs:
         cargo build --release --quiet
         cargo run --release
 
-  hyperfine:
-    name: Bench
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout sources
-      uses: actions/checkout@v2
-
-    - name: Install nightly toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-        profile: minimal
-        toolchain: nightly
-        override: true
-
-    - uses: Swatinem/rust-cache@v2
-    - name: Move to folder & run
-      run: |
-        cd 2022
-        cargo bench
-
   test:
     name: Run tests
     runs-on: ubuntu-latest
