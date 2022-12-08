@@ -21,7 +21,6 @@ jobs:
         override: true
 
     - uses: Swatinem/rust-cache@v2
-
     - name: Move to folder & run
       run: |
         cd 2022
@@ -43,16 +42,10 @@ jobs:
         override: true
 
     - uses: Swatinem/rust-cache@v2
-
-    - name: Install hyperfine
-      run: |
-        cargo install hyperfine --quiet
-
     - name: Move to folder & run
       run: |
         cd 2022
-        cargo build --release --quiet
-        hyperfine --warmup 3 -N './target/release/aoc2022'
+        cargo bench
 
   test:
     name: Run tests
