@@ -81,6 +81,11 @@ pub fn day8_p2_bench(c: &mut Criterion) {
     c.bench_function("d8_p2", |b| b.iter(|| day8::Problem.part_two(&input)));
 }
 
+pub fn day9_p1_bench(c: &mut Criterion) {
+    let input = get_input(9, false);
+    c.bench_function("d9_p1", |b| b.iter(|| day9::Problem.part_two(&input)));
+}
+
 criterion_group!(day1_benches, day1_p1_bench, day1_p2_bench);
 criterion_group!(day2_benches, day2_p1_bench, day2_p2_bench);
 criterion_group!(day3_benches, day3_p1_bench, day3_p2_bench);
@@ -89,6 +94,7 @@ criterion_group!(day5_benches, day5_p1_bench, day5_p2_bench);
 criterion_group!(day6_benches, day6_p1_bench, day6_p2_bench);
 criterion_group!(day7_benches, day7_p1_bench, day7_p2_bench);
 criterion_group!(day8_benches, day8_p1_bench, day8_p2_bench);
+criterion_group!(day9_benches, day9_p1_bench);
 criterion_main!(
     day1_benches,
     day2_benches,
@@ -97,5 +103,6 @@ criterion_main!(
     day5_benches,
     day6_benches,
     day7_benches,
-    day8_benches
+    day8_benches,
+    day9_benches
 );
