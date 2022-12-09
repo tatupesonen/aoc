@@ -7,14 +7,6 @@ pub fn chebyshev_distance(x: Point, y: Point) -> i32 {
     std::cmp::max((x.0 - y.0).abs(), (x.1 - y.1).abs())
 }
 
-#[derive(Clone, Copy, Debug, Eq, PartialEq, Hash)]
-struct Coord(i32, i32);
-impl From<Coord> for (i32, i32) {
-    fn from(v: Coord) -> Self {
-        (v.0, v.1)
-    }
-}
-
 #[derive(Copy, Clone, Debug)]
 enum Direction {
     Up,
