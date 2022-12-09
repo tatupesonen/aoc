@@ -1,4 +1,8 @@
-# Advent of Code
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/7150217/206574097-77a942c9-dfdc-487b-87ed-4c2729393349.png">
+</p>
+
+
 
 ## [2022](https://github.com/tatupesonen/aoc/tree/master/2022)
 [![2022 CI](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml)  
