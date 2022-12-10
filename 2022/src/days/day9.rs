@@ -69,8 +69,36 @@ impl Solution for Problem {
         tail_pos.len().to_string()
     }
 
-    fn part_two(&self, _input: &str) -> String {
-        todo!();
+    fn part_two(&self, input: &str) -> String {
+        let moves = get_moves(input);
+
+        let mut snake = [(0, 0); 10];
+        let mut tail_visited: BTreeSet<(i32, i32)> = BTreeSet::from(snake);
+
+        for mov in moves {
+            move_node(mov, &mut snake[0]);
+            for i in 1..snake.len() {
+                let head = snake[i - 1];
+                let tail = snake[i];
+
+                if chebyshev_distance(head, tail) > 1 {
+                    match head.0.cmp(&tail.0) {
+                        std::cmp::Ordering::Less => snake[i].0 -= 1,
+                        std::cmp::Ordering::Greater => snake[i].0 += 1,
+                        _ => {}
+                    }
+
+                    match head.1.cmp(&tail.1) {
+                        std::cmp::Ordering::Less => snake[i].1 -= 1,
+                        std::cmp::Ordering::Greater => snake[i].1 += 1,
+                        _ => {}
+                    }
+                }
+            }
+            tail_visited.insert(snake[snake.len() - 1]);
+        }
+
+        tail_visited.len().to_string()
     }
 }
 
@@ -78,6 +106,7 @@ impl Solution for Problem {
 mod tests {
     use super::*;
     const TEST_INPUT: &str = include_str!("../../inputs/9/test-input.txt");
+    const P2_INPUT: &str = include_str!("../../inputs/9/p2-input.txt");
 
     #[test]
     fn part1() {
@@ -85,8 +114,7 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn part2() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "8");
+        assert_eq!(Problem.part_two(P2_INPUT), "36");
     }
 }
