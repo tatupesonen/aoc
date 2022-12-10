@@ -45,6 +45,26 @@ impl CPU {
             .step_by(40)
             .fold(0, |acc, i| acc + (self.cycles[i] * i as i32))
     }
+
+    fn draw_screen(&self) -> String {
+        let mut output = String::from("\n");
+        // In the CRT the cycles start at 1, so let's also start at 1.
+        // We also need draw until 241 to get the last pixel.
+        for pixel in 1..241 {
+            // Shift the current pixel one left so the it lines up with our CRT.
+            // Line with is 40 so we take a modulo 40 and as long as it's less than 2 we draw a pixel.
+            if (self.cycles[pixel as usize] - (pixel - 1) % 40).abs() < 2 {
+                output += "#"
+            } else {
+                output += "."
+            }
+            // Don't draw newline on last pixel so it matches the test output exactly.
+            if pixel % 40 == 0 && pixel != 240 {
+                output += "\n"
+            }
+        }
+        output
+    }
 }
 
 pub struct Problem;
@@ -57,8 +77,12 @@ impl Solution for Problem {
         cpu.signal_strength().to_string()
     }
 
-    fn part_two(&self, _input: &str) -> String {
-        todo!();
+    fn part_two(&self, input: &str) -> String {
+        let instrs: Vec<Instruction> = input.lines().map(|e| e.into()).collect();
+        let mut cpu = CPU::new();
+        cpu.execute(&instrs);
+
+        cpu.draw_screen()
     }
 }
 
@@ -73,8 +97,13 @@ mod tests {
     }
 
     #[test]
-    #[ignore]
     fn part2() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "36");
+        let eq = "##..##..##..##..##..##..##..##..##..##..
+###...###...###...###...###...###...###.
+####....####....####....####....####....
+#####.....#####.....#####.....#####.....
+######......######......######......####
+#######.......#######.......#######.....";
+        assert_eq!(&Problem.part_two(TEST_INPUT)[1..], eq);
     }
 }
