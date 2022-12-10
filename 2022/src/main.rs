@@ -1,18 +1,15 @@
 #![feature(iter_array_chunks)]
 #![feature(iter_intersperse)]
 
+pub mod dayselect;
 pub mod utils;
 
 use aoc2022::*;
 use clap::{arg, Parser};
 use owo_colors::{OwoColorize, Stream::Stdout};
 
-fn select_day(day: usize) -> Option<Box<dyn Solution>> {
-    daymport::dir!("src/days")
-}
-
 fn run_all_days(test: bool) {
-    let days = (1..25).filter_map(select_day);
+    let days = (1..25).filter_map(dayselect::select_day);
     for (day_num, sol) in days.into_iter().enumerate() {
         let day_num = day_num + 1;
         run_day(sol, day_num, test);
@@ -49,7 +46,7 @@ struct Args {
 fn main() {
     let args = Args::parse();
     if let Some(day) = args.day {
-        let solution = select_day(day);
+        let solution = dayselect::select_day(day);
         match solution {
             Some(sol) => run_day(sol, day, args.test),
             None => {
