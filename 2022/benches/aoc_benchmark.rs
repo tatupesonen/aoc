@@ -3,92 +3,92 @@ use criterion::{criterion_group, criterion_main, Criterion};
 
 fn day1_p1_bench(c: &mut Criterion) {
     let input = get_input(1, false);
-    c.bench_function("d1_p1", |b| b.iter(|| day1::Problem.part_one(&input)));
+    c.bench_function("d1_p1", |b| b.iter(|| day01::Problem.part_one(&input)));
 }
 
 fn day1_p2_bench(c: &mut Criterion) {
     let input = get_input(1, false);
-    c.bench_function("d1_p2", |b| b.iter(|| day1::Problem.part_two(&input)));
+    c.bench_function("d1_p2", |b| b.iter(|| day01::Problem.part_two(&input)));
 }
 
 fn day2_p1_bench(c: &mut Criterion) {
     let input = get_input(2, false);
-    c.bench_function("d2_p1", |b| b.iter(|| day2::Problem.part_one(&input)));
+    c.bench_function("d2_p1", |b| b.iter(|| day02::Problem.part_one(&input)));
 }
 
 fn day2_p2_bench(c: &mut Criterion) {
     let input = get_input(2, false);
-    c.bench_function("d2_p2", |b| b.iter(|| day2::Problem.part_two(&input)));
+    c.bench_function("d2_p2", |b| b.iter(|| day02::Problem.part_two(&input)));
 }
 
 fn day3_p1_bench(c: &mut Criterion) {
     let input = get_input(3, false);
-    c.bench_function("d3_p1", |b| b.iter(|| day3::Problem.part_one(&input)));
+    c.bench_function("d3_p1", |b| b.iter(|| day03::Problem.part_one(&input)));
 }
 
 fn day3_p2_bench(c: &mut Criterion) {
     let input = get_input(3, false);
-    c.bench_function("d3_p2", |b| b.iter(|| day3::Problem.part_two(&input)));
+    c.bench_function("d3_p2", |b| b.iter(|| day03::Problem.part_two(&input)));
 }
 
 fn day4_p1_bench(c: &mut Criterion) {
     let input = get_input(4, false);
-    c.bench_function("d4_p1", |b| b.iter(|| day4::Problem.part_one(&input)));
+    c.bench_function("d4_p1", |b| b.iter(|| day04::Problem.part_one(&input)));
 }
 
 fn day4_p2_bench(c: &mut Criterion) {
     let input = get_input(4, false);
-    c.bench_function("d4_p2", |b| b.iter(|| day4::Problem.part_two(&input)));
+    c.bench_function("d4_p2", |b| b.iter(|| day04::Problem.part_two(&input)));
 }
 
 fn day5_p1_bench(c: &mut Criterion) {
     let input = get_input(5, false);
-    c.bench_function("d5_p1", |b| b.iter(|| day5::Problem.part_one(&input)));
+    c.bench_function("d5_p1", |b| b.iter(|| day05::Problem.part_one(&input)));
 }
 
 fn day5_p2_bench(c: &mut Criterion) {
     let input = get_input(5, false);
-    c.bench_function("d5_p2", |b| b.iter(|| day5::Problem.part_one(&input)));
+    c.bench_function("d5_p2", |b| b.iter(|| day05::Problem.part_one(&input)));
 }
 
 pub fn day6_p1_bench(c: &mut Criterion) {
     let input = get_input(6, false);
-    c.bench_function("d6_p1", |b| b.iter(|| day6::Problem.part_one(&input)));
+    c.bench_function("d6_p1", |b| b.iter(|| day06::Problem.part_one(&input)));
 }
 
 pub fn day6_p2_bench(c: &mut Criterion) {
     let input = get_input(6, false);
-    c.bench_function("d6_p2", |b| b.iter(|| day6::Problem.part_two(&input)));
+    c.bench_function("d6_p2", |b| b.iter(|| day06::Problem.part_two(&input)));
 }
 
 pub fn day7_p1_bench(c: &mut Criterion) {
     let input = get_input(7, false);
-    c.bench_function("d7_p1", |b| b.iter(|| day7::Problem.part_one(&input)));
+    c.bench_function("d7_p1", |b| b.iter(|| day07::Problem.part_one(&input)));
 }
 
 pub fn day7_p2_bench(c: &mut Criterion) {
     let input = get_input(7, false);
-    c.bench_function("d7_p2", |b| b.iter(|| day7::Problem.part_two(&input)));
+    c.bench_function("d7_p2", |b| b.iter(|| day07::Problem.part_two(&input)));
 }
 
 pub fn day8_p1_bench(c: &mut Criterion) {
     let input = get_input(8, false);
-    c.bench_function("d8_p1", |b| b.iter(|| day8::Problem.part_one(&input)));
+    c.bench_function("d8_p1", |b| b.iter(|| day08::Problem.part_one(&input)));
 }
 
 pub fn day8_p2_bench(c: &mut Criterion) {
     let input = get_input(8, false);
-    c.bench_function("d8_p2", |b| b.iter(|| day8::Problem.part_two(&input)));
+    c.bench_function("d8_p2", |b| b.iter(|| day08::Problem.part_two(&input)));
 }
 
 pub fn day9_p1_bench(c: &mut Criterion) {
     let input = get_input(9, false);
-    c.bench_function("d9_p1", |b| b.iter(|| day9::Problem.part_one(&input)));
+    c.bench_function("d9_p1", |b| b.iter(|| day09::Problem.part_one(&input)));
 }
 
 pub fn day9_p2_bench(c: &mut Criterion) {
     let input = get_input(9, false);
-    c.bench_function("d9_p2", |b| b.iter(|| day9::Problem.part_two(&input)));
+    c.bench_function("d9_p2", |b| b.iter(|| day09::Problem.part_two(&input)));
 }
 
 pub fn day10_p1_bench(c: &mut Criterion) {
