@@ -12,6 +12,7 @@ pub fn select_day(day: usize) -> Option<Box<dyn Solution>> {
         8 => Some(Box::new(aoc2022::days::day08::Problem)),
         9 => Some(Box::new(aoc2022::days::day09::Problem)),
         10 => Some(Box::new(aoc2022::days::day10::Problem)),
+        11 => Some(Box::new(aoc2022::days::day11::Problem)),
         _ => None,
     }
 }

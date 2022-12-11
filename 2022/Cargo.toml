@@ -9,7 +9,6 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.29", features = ["derive"] }
 criterion = "0.4.0"
-daymport = { path = "daymport" }
 owo-colors = { version = "3.5.0", features = ["supports-colors"] }
 rstest = "0.16.0"
 
