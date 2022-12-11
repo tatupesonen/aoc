@@ -47,7 +47,7 @@ impl From<&str> for Monkey {
             .trim()
             .split("Starting items: ")
             .collect::<Vec<&str>>()[1]
-            .split(",")
+            .split(',')
             .map(|item| item.trim().parse::<u64>().unwrap())
             .collect();
         let operation: Operation = lines[2]
@@ -104,7 +104,7 @@ impl Monkey {
         }
     }
     fn do_test(&self, item: u64) -> usize {
-        match item % self.test.num as u64 == 0 {
+        match item % self.test.num == 0 {
             true => self.test.true_branch,
             false => self.test.false_branch,
         }
