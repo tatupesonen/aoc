@@ -24,6 +24,7 @@ jobs:
     - name: Move to folder & run
       run: |
         cd 2022
+        echo "force ci"
         cargo build --release --quiet
         cargo run --release
 
