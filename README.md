@@ -26,11 +26,13 @@ Language of choice: Rust 🦀
     <th>9</th>
     <th>10</th>
     <th>11</th>
+    <th>12</th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>Part 1</td>
+    <td>⭐</td>
     <td>⭐</td>
     <td>⭐</td>
     <td>⭐</td>
@@ -55,7 +57,7 @@ Language of choice: Rust 🦀
     <td>⭐</td>
     <td>⭐</td>
     <td>⭐</td>
-    <td>⭐</td>
+    <td></td>
   </tr>
 </tbody>
 </table>
