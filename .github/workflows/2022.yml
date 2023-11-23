@@ -1,7 +1,7 @@
 on: 
   push:
     paths:
-      - "y_2022/**"
+      - "aoc2022/**"
       - ".github/**"
     
 name: CI (2022)
@@ -23,7 +23,7 @@ jobs:
     - uses: Swatinem/rust-cache@v2
     - name: Move to folder & run
       run: |
-        cd y_2022
+        cd aoc2022
         echo "force ci"
         cargo build --release --quiet
         cargo run --release
@@ -47,5 +47,5 @@ jobs:
       - name: Run cargo test
         uses: actions-rs/cargo@v1
         with:
-          args: --manifest-path 2022/Cargo.toml
+          args: --manifest-path aoc2022/Cargo.toml
           command: test
