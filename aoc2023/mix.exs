@@ -14,6 +14,7 @@ defmodule Aoc2023.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: { Aoc2023, [:day] },
       extra_applications: [:logger]
     ]
   end

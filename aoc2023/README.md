@@ -1,6 +1,6 @@
 # Aoc2023
 
-**TODO: Add description**
+Repository for @tatupesonen Advent of Code 2023 in Elixir.
 
 ## Installation
 
