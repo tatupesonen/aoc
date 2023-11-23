@@ -1,7 +1,7 @@
 on: 
   push:
     paths:
-      - "2022/**"
+      - "y_2022/**"
       - ".github/**"
     
 name: CI (2022)
@@ -23,7 +23,7 @@ jobs:
     - uses: Swatinem/rust-cache@v2
     - name: Move to folder & run
       run: |
-        cd 2022
+        cd y_2022
         echo "force ci"
         cargo build --release --quiet
         cargo run --release
