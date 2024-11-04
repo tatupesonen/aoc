@@ -31,7 +31,7 @@ impl From<char> for Goal {
         match c {
             'X' => Goal::Lose,
             'Y' => Goal::Tie,
-            'Z' => Goal::Win,
+            'B' => Goal::Win,
             _ => panic!("this should not happen"),
         }
     }
