@@ -1,8 +1,7 @@
-use std::{collections::HashMap, iter::Zip};
+use std::collections::HashMap;
 
 use crate::Solution;
 
-const TRIPLE_SPACE: &'static str = "   ";
 fn parse_day1(input: &str) -> (Vec<i32>, Vec<i32>) {
     let mut first = input
         .lines()
@@ -39,7 +38,7 @@ pub struct Problem;
 impl Solution for Problem {
     fn part_one(&self, input: &str) -> String {
         let (first, second) = parse_day1(input);
-        Iterator::zip(first.into_iter(), second.into_iter())
+        Iterator::zip(first.into_iter(), second)
             .map(distance)
             .sum::<i32>()
             .to_string()
@@ -54,7 +53,7 @@ impl Solution for Problem {
 
         first
             .iter()
-            .map(|v| (*v as usize) * m.get(&v).unwrap_or(&0))
+            .map(|v| (*v as usize) * m.get(v).unwrap_or(&0))
             .sum::<usize>()
             .to_string()
     }
