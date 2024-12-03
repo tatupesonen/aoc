@@ -4,7 +4,7 @@ on:
       - "aoc2024/**"
       - ".github/**"
     
-name: CI (2022)
+name: CI (2024)
 jobs:
   execute:
     name: Run application
