@@ -1,0 +1,51 @@
+on: 
+  push:
+    paths:
+      - "aoc2024/**"
+      - ".github/**"
+    
+name: CI (2022)
+jobs:
+  execute:
+    name: Run application
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2
+
+    - name: Install nightly toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: nightly
+        override: true
+
+    - uses: Swatinem/rust-cache@v2
+    - name: Move to folder & run
+      run: |
+        cd aoc2024
+        echo "force ci"
+        cargo build --release --quiet
+        cargo run --release
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install nightly toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: nightly
+          override: true
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          args: --manifest-path aoc2024/Cargo.toml
+          command: test
