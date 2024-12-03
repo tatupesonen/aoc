@@ -62,3 +62,7 @@ Language of choice: Rust 🦀
 </tbody>
 </table>
 </details>
+
+## [2024](https://github.com/tatupesonen/aoc/tree/master/2024)
+[![2024 CI](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml)  
+Language of choice: Rust
