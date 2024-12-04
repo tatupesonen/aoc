@@ -47,23 +47,25 @@ enum Process {
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(&self, input: &str) -> String {
-        let (_, instrs) = parse(input).unwrap();
+    fn part_one(&self, input: &str) -> miette::Result<String> {
+        let (_, instrs) = parse(input).map_err(|err| miette::miette!("Parsing failed: {:?}", err))?;
 
-        instrs
+        let res = instrs
             .iter()
             .map(|instr| match instr {
                 Instruction::Mul(x, y) => x * y,
                 _ => 0,
             })
             .sum::<u32>()
-            .to_string()
+            .to_string();
+
+          Ok(res)
     }
 
-    fn part_two(&self, input: &str) -> String {
-        let (_input, instructions) = parse(input).unwrap();
+    fn part_two(&self, input: &str) -> miette::Result<String> {
+        let (_, instructions) = parse(input).map_err(|err| miette::miette!("Parsing failed: {:?}", err))?;
 
-        instructions
+        let res = instructions
             .iter()
             .fold((Process::DoProcess, 0), |(process, acc), ins| match ins {
                 Instruction::Mul(a, b) => {
@@ -77,7 +79,9 @@ impl Solution for Problem {
                 Instruction::Dont => (Process::DontProcess, acc),
             })
             .1
-            .to_string()
+            .to_string();
+
+        Ok(res)
     }
 }
 
@@ -91,21 +95,21 @@ mod tests {
 
     #[test]
     fn part1_test() {
-        assert_eq!(Problem.part_one(TEST_INPUT), "161");
+        assert_eq!(Problem.part_one(TEST_INPUT).unwrap(), "161");
     }
 
     #[test]
     fn part2_test() {
-        assert_eq!(Problem.part_two(TEST_INPUT_2), "48");
+        assert_eq!(Problem.part_two(TEST_INPUT_2).unwrap(), "48");
     }
 
     #[test]
     fn part1() {
-        assert_eq!(Problem.part_one(INPUT), "178886550");
+        assert_eq!(Problem.part_one(INPUT).unwrap(), "178886550");
     }
 
     #[test]
     fn part2() {
-        assert_eq!(Problem.part_two(INPUT), "87163705");
+        assert_eq!(Problem.part_two(INPUT).unwrap(), "87163705");
     }
 }

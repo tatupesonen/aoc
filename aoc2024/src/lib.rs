@@ -2,8 +2,8 @@
 #![feature(iter_intersperse)]
 
 pub trait Solution {
-    fn part_one(&self, input: &str) -> String;
-    fn part_two(&self, input: &str) -> String;
+    fn part_one(&self, input: &str) -> miette::Result<String>;
+    fn part_two(&self, input: &str) -> miette::Result<String>;
 }
 
 pub fn get_input(day_num: usize, test: bool) -> String {

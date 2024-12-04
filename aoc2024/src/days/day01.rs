@@ -2,32 +2,33 @@ use std::collections::HashMap;
 
 use crate::Solution;
 
-fn parse_day1(input: &str) -> (Vec<i32>, Vec<i32>) {
-    let mut first = input
+fn parse_day1(input: &str) -> miette::Result<(Vec<i32>, Vec<i32>)> {
+    let mut first: Vec<i32> = input
         .lines()
         .map(|line| {
             line.split_whitespace()
                 .next()
-                .unwrap()
+                .ok_or_else(|| miette::miette!("Missing first value in line"))?
                 .parse::<i32>()
-                .unwrap()
+                .map_err(|e| miette::miette!("Failed to parse first value as i32: {}", e))
         })
-        .collect::<Vec<i32>>();
+        .collect::<Result<Vec<_>, _>>()?;
 
-    let mut second = input
+    let mut second: Vec<i32> = input
         .lines()
         .map(|line| {
             line.split_whitespace()
                 .nth(1)
-                .unwrap()
+                .ok_or_else(|| miette::miette!("Missing second value in line"))?
                 .parse::<i32>()
-                .unwrap()
+                .map_err(|e| miette::miette!("Failed to parse second value as i32: {}", e))
         })
-        .collect::<Vec<i32>>();
+        .collect::<Result<Vec<_>, _>>()?;
+
     first.sort();
     second.sort();
 
-    (first, second)
+    Ok((first, second))
 }
 
 fn distance(it: (i32, i32)) -> i32 {
@@ -36,26 +37,26 @@ fn distance(it: (i32, i32)) -> i32 {
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(&self, input: &str) -> String {
-        let (first, second) = parse_day1(input);
-        Iterator::zip(first.into_iter(), second)
+    fn part_one(&self, input: &str) -> miette::Result<String> {
+        let (first, second) = parse_day1(input)?;
+        Ok(Iterator::zip(first.into_iter(), second)
             .map(distance)
             .sum::<i32>()
-            .to_string()
+            .to_string())
     }
 
-    fn part_two(&self, input: &str) -> String {
-        let (first, second) = parse_day1(input);
+    fn part_two(&self, input: &str) -> miette::Result<String> {
+        let (first, second) = parse_day1(input)?;
         let mut m: HashMap<i32, usize> = HashMap::new();
         for x in second {
             *m.entry(x).or_default() += 1;
         }
 
-        first
+        Ok(first
             .iter()
             .map(|v| (*v as usize) * m.get(v).unwrap_or(&0))
             .sum::<usize>()
-            .to_string()
+            .to_string())
     }
 }
 
@@ -68,21 +69,21 @@ mod tests {
 
     #[test]
     fn part1_test() {
-        assert_eq!(Problem.part_one(TEST_INPUT), "11");
+        assert_eq!(Problem.part_one(TEST_INPUT).unwrap(), "11");
     }
 
     #[test]
     fn part2_test() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "31");
+        assert_eq!(Problem.part_two(TEST_INPUT).unwrap(), "31");
     }
 
     #[test]
     fn part1() {
-        assert_eq!(Problem.part_one(INPUT), "2066446");
+        assert_eq!(Problem.part_one(INPUT).unwrap(), "2066446");
     }
 
     #[test]
     fn part2() {
-        assert_eq!(Problem.part_two(INPUT), "24931009");
+        assert_eq!(Problem.part_two(INPUT).unwrap(), "24931009");
     }
 }

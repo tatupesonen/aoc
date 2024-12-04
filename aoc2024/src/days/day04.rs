@@ -4,7 +4,7 @@ const SUB: &str = "XMAS";
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(&self, input: &str) -> String {
+    fn part_one(&self, input: &str) -> miette::Result<String> {
         let mtx: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
         let mut permutations: Vec<String> = vec![];
 
@@ -64,10 +64,10 @@ impl Solution for Problem {
                 .count();
         }
 
-        count.to_string()
+        Ok(count.to_string())
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn part_two(&self, input: &str) -> miette::Result<String> {
         // thank god part 2 is WAY easier.
         let mtx: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
 
@@ -103,7 +103,7 @@ impl Solution for Problem {
             }
         }
 
-        count.to_string()
+        Ok(count.to_string())
     }
 }
 
@@ -116,21 +116,21 @@ mod tests {
 
     #[test]
     fn part1_test() {
-        assert_eq!(Problem.part_one(TEST_INPUT), "18");
+        assert_eq!(Problem.part_one(TEST_INPUT).unwrap(), "18");
     }
 
     #[test]
     fn part2_test() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "9");
+        assert_eq!(Problem.part_two(TEST_INPUT).unwrap(), "9");
     }
 
     #[test]
     fn part1() {
-        assert_eq!(Problem.part_one(INPUT), "2547");
+        assert_eq!(Problem.part_one(INPUT).unwrap(), "2547");
     }
 
     #[test]
     fn part2() {
-        assert_eq!(Problem.part_two(INPUT), "1939");
+        assert_eq!(Problem.part_two(INPUT).unwrap(), "1939");
     }
 }

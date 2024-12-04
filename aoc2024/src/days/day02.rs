@@ -38,26 +38,26 @@ fn is_safe(sequence: &[i32], mut dampener_levels: usize) -> bool {
 
 pub struct Problem;
 impl Solution for Problem {
-    fn part_one(&self, input: &str) -> String {
+    fn part_one(&self, input: &str) -> miette::Result<String> {
         let reports = parse(input);
 
-        reports
+        Ok(reports
             .iter()
             .map(|levels| is_safe(levels, 0))
             .filter(|&e| e)
             .count()
-            .to_string()
+            .to_string())
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn part_two(&self, input: &str) -> miette::Result<String> {
         let reports = parse(input);
 
-        reports
+        Ok(reports
             .iter()
             .map(|levels| is_safe(levels, 1))
             .filter(|&e| e)
             .count()
-            .to_string()
+            .to_string())
     }
 }
 
@@ -70,21 +70,21 @@ mod tests {
 
     #[test]
     fn part1_test() {
-        assert_eq!(Problem.part_one(TEST_INPUT), "2");
+        assert_eq!(Problem.part_one(TEST_INPUT).unwrap(), "2");
     }
 
     #[test]
     fn part2_test() {
-        assert_eq!(Problem.part_two(TEST_INPUT), "5");
+        assert_eq!(Problem.part_two(TEST_INPUT).unwrap(), "5");
     }
 
     #[test]
     fn part1() {
-        assert_eq!(Problem.part_one(INPUT), "326");
+        assert_eq!(Problem.part_one(INPUT).unwrap(), "326");
     }
 
     #[test]
     fn part2() {
-        assert_eq!(Problem.part_two(INPUT), "381");
+        assert_eq!(Problem.part_two(INPUT).unwrap(), "381");
     }
 }

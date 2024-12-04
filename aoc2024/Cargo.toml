@@ -9,6 +9,8 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.0.29", features = ["derive"] }
 criterion = "0.3.6"
+miette = { version = "7.4.0", features = ["fancy"] }
 nom = "7.1.3"
 owo-colors = { version = "3.5.0", features = ["supports-colors"] }
 rstest = "0.16.0"
+toml = "0.8.19"
