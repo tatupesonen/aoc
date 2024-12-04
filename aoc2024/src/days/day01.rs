@@ -62,16 +62,27 @@ impl Solution for Problem {
 #[cfg(test)]
 mod tests {
     const TEST_INPUT: &str = include_str!("../../inputs/1/test-input.txt");
+    const INPUT: &str = include_str!("../../inputs/1/input.txt");
 
     use super::*;
 
     #[test]
-    fn part1() {
+    fn part1_test() {
         assert_eq!(Problem.part_one(TEST_INPUT), "11");
     }
 
     #[test]
-    fn part2() {
+    fn part2_test() {
         assert_eq!(Problem.part_two(TEST_INPUT), "31");
+    }
+
+    #[test]
+    fn part1() {
+        assert_eq!(Problem.part_one(INPUT), "2066446");
+    }
+
+    #[test]
+    fn part2() {
+        assert_eq!(Problem.part_two(INPUT), "24931009");
     }
 }
