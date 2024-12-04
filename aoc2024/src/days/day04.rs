@@ -67,50 +67,50 @@ impl Solution for Problem {
         count.to_string()
     }
 
-fn part_two(&self, input: &str) -> String {
-    // thank god part 2 is WAY easier.
-    let mtx: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
+    fn part_two(&self, input: &str) -> String {
+        // thank god part 2 is WAY easier.
+        let mtx: Vec<Vec<char>> = input.lines().map(|line| line.chars().collect()).collect();
 
-    let num_cols = mtx[0].len();
-    let num_rows = mtx.len();
-    let mut a_coords = vec![];
+        let num_cols = mtx[0].len();
+        let num_rows = mtx.len();
+        let mut a_coords = vec![];
 
-    for row in 1..(num_rows - 1) {
-        for col in 1..(num_cols - 1) {
-            if mtx[row][col] == 'A' {
-                a_coords.push((row, col))
+        for row in 1..(num_rows - 1) {
+            for col in 1..(num_cols - 1) {
+                if mtx[row][col] == 'A' {
+                    a_coords.push((row, col))
+                }
             }
         }
-    }
-    // check original coords
-    let mut count = 0;
-    for a in a_coords {
-        // check [-1, -1] up left
-        // check [1, 1] down right
-        let ul = mtx[a.0 - 1][a.1 - 1];
-        let dr = mtx[a.0 + 1][a.1 + 1];
+        // check original coords
+        let mut count = 0;
+        for a in a_coords {
+            // check [-1, -1] up left
+            // check [1, 1] down right
+            let ul = mtx[a.0 - 1][a.1 - 1];
+            let dr = mtx[a.0 + 1][a.1 + 1];
 
-        // check [-1, 1] up right
-        // check [1, -1] down left
-        let ur = mtx[a.0 - 1][a.1 + 1];
-        let dl = mtx[a.0 + 1][a.1 - 1];
+            // check [-1, 1] up right
+            // check [1, -1] down left
+            let ur = mtx[a.0 - 1][a.1 + 1];
+            let dl = mtx[a.0 + 1][a.1 - 1];
 
-        let urdl = format!("{}{}", ur, dl);
-        let uldr = format!("{}{}", ul, dr);
+            let urdl = format!("{}{}", ur, dl);
+            let uldr = format!("{}{}", ul, dr);
 
-        if (urdl == "SM" || urdl == "MS") && (uldr == "SM" || uldr == "MS") {
-            count += 1;
+            if (urdl == "SM" || urdl == "MS") && (uldr == "SM" || uldr == "MS") {
+                count += 1;
+            }
         }
-    }
 
-    count.to_string()
-}
+        count.to_string()
+    }
 }
 
 #[cfg(test)]
 mod tests {
-    const TEST_INPUT: &str = include_str!("../../inputs/4/test-input.txt");
-    const INPUT: &str = include_str!("../../inputs/4/input.txt");
+    const TEST_INPUT: &str = include_str!("../../inputs/04/test-input.txt");
+    const INPUT: &str = include_str!("../../inputs/04/input.txt");
 
     use super::*;
 

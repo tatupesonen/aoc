@@ -63,8 +63,8 @@ impl Solution for Problem {
 
 #[cfg(test)]
 mod tests {
-    const TEST_INPUT: &str = include_str!("../../inputs/2/test-input.txt");
-    const INPUT: &str = include_str!("../../inputs/2/input.txt");
+    const TEST_INPUT: &str = test_input!("02");
+    const INPUT: &str = input!("02");
 
     use super::*;
 

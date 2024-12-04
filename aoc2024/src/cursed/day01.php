@@ -1,11 +1,6 @@
 <?php
-
-if(!file_exists("./input.txt")) {
-  echo "Missing input.txt\n";
-  exit(1);
-}
-
-$input = file_get_contents("./input.txt");
+$loadFrom = "../../../inputs/1/input.txt";
+$input = file_get_contents($loadFrom);
 
 $left = [];
 $right = [];

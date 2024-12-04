@@ -83,9 +83,9 @@ impl Solution for Problem {
 
 #[cfg(test)]
 mod tests {
-    const TEST_INPUT: &str = include_str!("../../inputs/3/test-input.txt");
-    const TEST_INPUT_2: &str = include_str!("../../inputs/3/test-input-2.txt");
-    const INPUT: &str = include_str!("../../inputs/3/input.txt");
+    const TEST_INPUT: &str = include_str!("../../inputs/03/test-input.txt");
+    const TEST_INPUT_2: &str = include_str!("../../inputs/03/test-input-2.txt");
+    const INPUT: &str = include_str!("../../inputs/03/input.txt");
 
     use super::*;
 

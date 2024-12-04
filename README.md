@@ -4,7 +4,7 @@
 
 
 
-## [2022](https://github.com/tatupesonen/aoc/tree/master/2022)
+## [2022](https://github.com/tatupesonen/aoc/tree/master/aoc2022)
 [![2022 CI](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2022.yml)  
 Language of choice: Rust 🦀
 
@@ -64,10 +64,10 @@ Language of choice: Rust 🦀
 </details>
 
 
-## [2023](https://github.com/tatupesonen/aoc/tree/master/2023)  
+## [2023](https://github.com/tatupesonen/aoc/tree/master/aoc2023)  
 Language of choice: 💧Elixir  
 (Only did first day)
 
-## [2024](https://github.com/tatupesonen/aoc/tree/master/2024)
+## [2024](https://github.com/tatupesonen/aoc/tree/master/aoc2024)
 [![2024 CI](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml)  
 Language of choice: Rust

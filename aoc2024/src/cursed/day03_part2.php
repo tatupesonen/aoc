@@ -1,5 +1,5 @@
 <?php
-$loadFrom = "../../inputs/3/input.txt";
+$loadFrom = "../../../inputs/3/input.txt";
 
 if(!file_exists($loadFrom)) {
   echo "Missing $loadFrom\n";

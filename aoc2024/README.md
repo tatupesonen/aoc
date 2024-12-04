@@ -1,5 +1,5 @@
 # 2024
-AoC 2022 in [Rust](https://www.rust-lang.org/)
+AoC 2024 in [Rust](https://www.rust-lang.org/)
 
 ## Usage
 All commands below should be ran in this folder (aoc2024).
