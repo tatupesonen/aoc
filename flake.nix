@@ -16,17 +16,15 @@
         # Common packages
         commonPackages = with pkgs; [ git ];
 
-        rustStable = pkgs.rust-bin.stable.latest.default;
-
         rustNightly = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.rustfmt);
 
       in {
         devShells = {
           aoc2022 = pkgs.mkShell {
             name = "aoc2022-shell";
-            buildInputs = commonPackages ++ [ rustStable ];
+            buildInputs = commonPackages ++ [ rustNightly ];
             shellHook = ''
-              echo "🔧 Entered devshell for aoc2022"
+              echo "🔧 Entered devshell for aoc2022 (Rust Nightly)"
 	      cd aoc2022/
             '';
           };
@@ -44,7 +42,7 @@
             name = "aoc2024-shell";
             buildInputs = commonPackages ++ [ rustNightly ];
             shellHook = ''
-              echo "🔧 Entered devshell for aoc2024 (Rust Nightly)"
+              echo "🔧 Entered devshell for aoc2024 (Rust Stable)"
 	      cd aoc2024/
             '';
           };
