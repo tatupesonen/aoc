@@ -1,7 +1,4 @@
-use std::{
-    collections::HashMap,
-    ops::{Add, Sub},
-};
+use std::ops::{Add, Sub};
 
 use std::default::Default;
 
@@ -17,7 +14,7 @@ impl Rotation {
     fn dir(&self) -> i32 {
         match *self {
             Rotation::Left(x) => -x,
-            Rotation::Right(x) => x
+            Rotation::Right(x) => x,
         }
     }
 }
@@ -74,7 +71,10 @@ struct Dial {
 
 impl Default for Dial {
     fn default() -> Self {
-        Self { value: 50, counter: Default::default() }
+        Self {
+            value: 50,
+            counter: Default::default(),
+        }
     }
 }
 impl Dial {

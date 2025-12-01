@@ -1,8 +1,8 @@
-# 2024
-AoC 2024 in [Rust](https://www.rust-lang.org/)
+# 2025
+AoC 2025 in [Rust](https://www.rust-lang.org/)
 
 ## Usage
-All commands below should be ran in this folder (aoc2024).
+All commands below should be ran in this folder (aoc2025).
 
 ## Tests
 To run all tests:
@@ -36,7 +36,7 @@ cargo bench
 ```console
 cargo run --release -- --help
 
-Usage: aoc2024 [OPTIONS]
+Usage: aoc2025 [OPTIONS]
 
 Options:
   -d, --day <DAY>  Day to run
