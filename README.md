@@ -71,3 +71,8 @@ Language of choice: 💧Elixir
 ## [2024](https://github.com/tatupesonen/aoc/tree/master/aoc2024)
 [![2024 CI](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml)  
 Language of choice: Rust
+
+
+## [2025](https://github.com/tatupesonen/aoc/tree/master/aoc2025)
+[![2025 CI](https://github.com/tatupesonen/aoc/actions/workflows/2025.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2025.yml)  
+Language of choice: Rust

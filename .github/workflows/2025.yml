@@ -1,0 +1,51 @@
+on: 
+  push:
+    paths:
+      - "aoc2025/**"
+      - ".github/**"
+    
+name: CI (2025)
+jobs:
+  execute:
+    name: Run application
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2
+
+    - name: Install stable toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+
+    - uses: Swatinem/rust-cache@v2
+    - name: Move to folder & run
+      run: |
+        cd aoc2025
+        echo "force ci"
+        cargo build --release --quiet
+        cargo run --release
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run cargo test
+        uses: actions-rs/cargo@v1
+        with:
+          args: --manifest-path aoc2055/Cargo.toml
+          command: test
