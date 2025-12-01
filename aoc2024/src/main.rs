@@ -2,10 +2,9 @@
 #![feature(iter_intersperse)]
 
 pub mod dayselect;
-const YEAR: u16 = 2024;
 
 use aoc2024::*;
-use clap::{arg, Parser, Subcommand};
+use clap::{Parser, Subcommand};
 use owo_colors::{OwoColorize, Stream::Stdout};
 
 fn run_all_days(test: bool) -> miette::Result<()> {
@@ -85,7 +84,7 @@ fn main() -> miette::Result<()> {
                 run_all_days(test)?;
             }
         }
-        Command::Template { day } => {
+        Command::Template { day: _ } => {
             todo!();
         }
     }
