@@ -47,5 +47,5 @@ jobs:
       - name: Run cargo test
         uses: actions-rs/cargo@v1
         with:
-          args: --manifest-path aoc2055/Cargo.toml
+          args: --manifest-path aoc2025/Cargo.toml
           command: test
