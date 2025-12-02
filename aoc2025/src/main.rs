@@ -4,11 +4,11 @@ pub mod util;
 use std::{fs, path::Path};
 const YEAR: u16 = 2024;
 
-use aoc2025::{Solution, get_input};
+use aoc2025::{get_input, Solution};
 use clap::{arg, Parser, Subcommand};
 use miette::{IntoDiagnostic, Result, WrapErr};
 use owo_colors::{OwoColorize, Stream::Stdout};
-use tera::{Tera, Context};
+use tera::{Context, Tera};
 
 fn run_all_days(test: bool) -> Result<()> {
     let days = (1..25).filter_map(days::select_day);
@@ -27,7 +27,7 @@ pub fn run_day(day: Box<dyn Solution>, test: bool) -> Result<()> {
     let input = get_input(day_num, test);
     if input.is_none() {
         println!("Day {day_num:02} not implemented...");
-        return Ok(())
+        return Ok(());
     }
     let input = input.unwrap();
 
@@ -106,7 +106,8 @@ fn main() -> Result<()> {
             context.insert("day", &day);
             context.insert("day_padded", &day_padded);
 
-            let rendered = tera.render("day", &context)
+            let rendered = tera
+                .render("day", &context)
                 .into_diagnostic()
                 .wrap_err_with(|| format!("Failed rendering template for day {day_padded}"))?;
 
@@ -139,7 +140,9 @@ fn main() -> Result<()> {
                 ));
             }
 
-            let input_data = resp.body_mut().read_to_string()
+            let input_data = resp
+                .body_mut()
+                .read_to_string()
                 .into_diagnostic()
                 .wrap_err("Failed to read AoC input response body")?;
 

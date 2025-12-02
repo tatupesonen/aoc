@@ -29,7 +29,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     writeln!(out)?;
-    writeln!(out, "pub fn select_day(day: usize) -> Option<Box<dyn Solution>> {{")?;
+    writeln!(
+        out,
+        "pub fn select_day(day: usize) -> Option<Box<dyn Solution>> {{"
+    )?;
     writeln!(out, "    match day {{")?;
 
     for (num, name) in &files {

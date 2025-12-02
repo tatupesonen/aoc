@@ -1,7 +1,7 @@
-use std::ops::RangeInclusive;
-use miette::{miette, Context, IntoDiagnostic, Result};
-use crate::Solution;
 use crate::util::*;
+use crate::Solution;
+use miette::{miette, Context, IntoDiagnostic, Result};
+use std::ops::RangeInclusive;
 
 fn parse(input: &str) -> Result<Vec<RangeInclusive<u64>>> {
     input
@@ -25,7 +25,6 @@ fn parse(input: &str) -> Result<Vec<RangeInclusive<u64>>> {
         })
         .collect()
 }
-
 
 fn double(n: u64) -> u64 {
     let s = n.to_string();
@@ -65,10 +64,7 @@ impl Solution for Problem {
     fn part_one(&self, input: &str) -> miette::Result<String> {
         let ranges = parse(input)?;
 
-        let count: u64 = ranges
-            .into_iter() 
-            .flat_map(|range| range.map(double))
-            .sum();
+        let count: u64 = ranges.into_iter().flat_map(|range| range.map(double)).sum();
 
         Ok(count.to_string())
     }
@@ -77,7 +73,7 @@ impl Solution for Problem {
         let ranges = parse(input)?;
 
         let count: u64 = ranges
-            .into_iter() 
+            .into_iter()
             .flat_map(|range| range.map(repeated))
             .sum();
 
@@ -91,8 +87,8 @@ impl Solution for Problem {
 
 #[cfg(test)]
 mod tests {
-    use aoc2025::{input, test_input};
     use super::*;
+    use aoc2025::{input, test_input};
     const TEST_INPUT: &str = test_input!("02");
     const INPUT: &str = input!("02");
 
