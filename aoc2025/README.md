@@ -32,8 +32,6 @@ cargo run --release -- --test # Runs all with test input
 cargo bench
 ```
 
-Benchmark results are saved as HTML reports in `benches/criterion/`. View the [latest benchmark report](benches/criterion/index.html).
-
 ### Show all commands
 ```console
 cargo run --release -- --help
