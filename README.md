@@ -70,7 +70,7 @@ Language of choice: 💧Elixir
 
 ## [2024](https://github.com/tatupesonen/aoc/tree/master/aoc2024)
 [![2024 CI](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml/badge.svg)](https://github.com/tatupesonen/aoc/actions/workflows/2024.yml)  
-Language of choice: Rust
+Language of choice: Rust (and some PHP)
 
 
 ## [2025](https://github.com/tatupesonen/aoc/tree/master/aoc2025)
