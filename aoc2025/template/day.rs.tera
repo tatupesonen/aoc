@@ -1,0 +1,47 @@
+use miette::{miette, Context, IntoDiagnostic, Result};
+use crate::Solution;
+use crate::util::*;
+
+pub struct Problem;
+
+impl Solution for Problem {
+    fn part_one(&self, input: &str) -> miette::Result<String> {
+        Ok(String::from(""))
+    }
+
+    fn part_two(&self, input: &str) -> miette::Result<String> {
+        Ok(String::from(""))
+    }
+
+    fn day(&self) -> u16 {
+        {{ day }}
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use aoc2025::{input, test_input};
+    use super::*;
+    const TEST_INPUT: &str = test_input!("{{ day_padded }}");
+    const INPUT: &str = input!("{{ day_padded }}");
+
+    #[test]
+    fn part1_test() {
+        assert_eq!(Problem.part_one(TEST_INPUT).unwrap(), "");
+    }
+
+    #[test]
+    fn part2_test() {
+        assert_eq!(Problem.part_two(TEST_INPUT).unwrap(), "");
+    }
+
+    #[test]
+    fn part1() {
+        assert_eq!(Problem.part_one(INPUT).unwrap(), "");
+    }
+
+    #[test]
+    fn part2() {
+        assert_eq!(Problem.part_two(INPUT).unwrap(), "");
+    }
+}

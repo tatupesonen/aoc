@@ -61,6 +61,10 @@ impl Solution for Problem {
 
         Ok(dial.counter.to_string())
     }
+
+    fn day(&self) -> u16 {
+        1
+    }
 }
 
 #[derive(Debug)]
@@ -94,10 +98,11 @@ impl Dial {
 
 #[cfg(test)]
 mod tests {
+    use aoc2025::{input, test_input};
+    use super::*;
     const TEST_INPUT: &str = test_input!("01");
     const INPUT: &str = input!("01");
 
-    use super::*;
 
     #[test]
     fn part1_test() {
