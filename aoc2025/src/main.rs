@@ -72,7 +72,7 @@ enum Command {
 }
 
 fn main() -> Result<()> {
-    dotenvy::dotenv().into_diagnostic()?;
+    let _ = dotenvy::dotenv();
     let args = Args::parse();
     match args.command {
         Command::Run { day, test } => {
