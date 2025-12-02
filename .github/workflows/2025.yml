@@ -20,12 +20,9 @@ jobs:
         toolchain: stable
         override: true
 
-    - uses: Swatinem/rust-cache@v2
     - name: Move to folder & run
       run: |
         cd aoc2025
-        echo "force ci"
-        cargo build --release --quiet
         cargo run --release -- run
 
   test:
