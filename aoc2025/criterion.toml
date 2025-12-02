@@ -1,0 +1,2 @@
+# Criterion.rs configuration
+output_directory = "benches/criterion"

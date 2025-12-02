@@ -47,3 +47,40 @@ jobs:
         with:
           args: --manifest-path aoc2025/Cargo.toml
           command: test
+
+  bench:
+    name: Run benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Install stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Run cargo bench
+        uses: actions-rs/cargo@v1
+        with:
+          args: --manifest-path aoc2025/Cargo.toml
+          command: bench
+
+      - name: Copy benchmark reports
+        run: |
+          cd aoc2025
+          mkdir -p benches/criterion
+          cp -r target/criterion/report/* benches/criterion/ 2>/dev/null || true
+
+      - name: Commit benchmark results
+        uses: EndBug/add-and-commit@v9
+        with:
+          cwd: aoc2025
+          message: "Update benchmark results"
+          add: "benches/criterion"
+          pull: "--rebase --autostash"
+        continue-on-error: true

@@ -26,3 +26,5 @@ macro_rules! input {
         include_str!(concat!("../../inputs/", $day, "/input.txt"))
     };
 }
+
+pub mod days;

@@ -99,9 +99,8 @@ impl Dial {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use aoc2025::{input, test_input};
-    const TEST_INPUT: &str = test_input!("01");
-    const INPUT: &str = input!("01");
+    const TEST_INPUT: &str = include_str!("../../inputs/01/test-input.txt");
+    const INPUT: &str = include_str!("../../inputs/01/input.txt");
 
     #[test]
     fn part1_test() {

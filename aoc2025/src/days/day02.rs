@@ -88,9 +88,8 @@ impl Solution for Problem {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use aoc2025::{input, test_input};
-    const TEST_INPUT: &str = test_input!("02");
-    const INPUT: &str = input!("02");
+    const TEST_INPUT: &str = include_str!("../../inputs/02/test-input.txt");
+    const INPUT: &str = include_str!("../../inputs/02/input.txt");
 
     #[test]
     fn part1_test() {
