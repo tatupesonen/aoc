@@ -2,7 +2,7 @@ pub mod days;
 pub mod util;
 
 use std::{fs, path::Path};
-const YEAR: u16 = 2024;
+const YEAR: u16 = 2025;
 
 use aoc2025::{get_input, Solution};
 use clap::{arg, Parser, Subcommand};
