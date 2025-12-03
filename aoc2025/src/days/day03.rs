@@ -62,9 +62,11 @@ impl Solution for Problem {
             if r > 0 {
                 stack.truncate(stack.len() - r)
             }
-            println!("{stack:?}");
-            let num: String = stack.into_iter().filter_map(|d| char::from_digit(d, 10)).collect();
-            counter += num.parse::<u64>().unwrap();
+            let mut mul = 1;
+            for i in (0..stack.len()).rev() {
+                counter += stack[i] as u64 * mul;
+                mul *= 10;
+            }
         }
 
         Ok(counter.to_string())
