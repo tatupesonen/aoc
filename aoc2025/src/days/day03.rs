@@ -1,17 +1,21 @@
 use crate::Solution;
 
-fn parse_day_1(input: &str) -> Vec<Vec<u32>> {
+fn parse_day_1(input: &str) -> Vec<Vec<u8>> {
     input
         .lines()
-        .map(|line| line.chars().filter_map(|c| c.to_digit(10)).collect())
+        .map(|line| {
+            line.chars()
+                .map(|c| c.to_digit(10).unwrap() as u8)
+                .collect()
+        })
         .collect()
 }
 
-fn solve(bank: &Vec<u32>, r: usize) -> u64 {
+fn solve(bank: &Vec<u8>, r: usize) -> u64 {
     let mut counter = 0;
     let n = bank.len();
     let mut r = n - r;
-    let mut stack: Vec<u32> = Vec::with_capacity(n);
+    let mut stack: Vec<u8> = Vec::with_capacity(n);
     for digit in bank {
         while let Some(&last) = stack.last() {
             if r > 0 && last < *digit {
