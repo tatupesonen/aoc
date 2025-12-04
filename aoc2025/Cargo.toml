@@ -33,3 +33,6 @@ harness = false
 name = "day03_bench"
 harness = false
 
+[[bench]]
+name = "day04_bench"
+harness = false
