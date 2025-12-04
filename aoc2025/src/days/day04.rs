@@ -149,8 +149,6 @@ impl Solution for Problem {
                 grid.set((x, y), Position::Empty);
                 counter += 1;
             }
-
-            print!("{}\n\n", grid);
         }
 
         Ok(counter.to_string())
