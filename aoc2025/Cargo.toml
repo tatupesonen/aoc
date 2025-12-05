@@ -36,3 +36,8 @@ harness = false
 [[bench]]
 name = "day04_bench"
 harness = false
+
+
+[[bench]]
+name = "day05_bench"
+harness = false

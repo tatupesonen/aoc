@@ -4,6 +4,7 @@ pub mod day01;
 pub mod day02;
 pub mod day03;
 pub mod day04;
+pub mod day05;
 
 pub fn select_day(day: usize) -> Option<Box<dyn Solution>> {
     match day {
@@ -11,6 +12,7 @@ pub fn select_day(day: usize) -> Option<Box<dyn Solution>> {
         2 => Some(Box::new(crate::days::day02::Problem)),
         3 => Some(Box::new(crate::days::day03::Problem)),
         4 => Some(Box::new(crate::days::day04::Problem)),
+        5 => Some(Box::new(crate::days::day05::Problem)),
         _ => None,
     }
 }
