@@ -35,10 +35,6 @@ impl Solution for Problem {
             for (start, end) in &ranges {
                 if ingredient.number >= *start && ingredient.number <= *end {
                     ingredient.fresh = true;
-                    println!(
-                        "Set {} to fresh, was in range {start}..={end}",
-                        ingredient.number
-                    );
                     break;
                 }
             }
